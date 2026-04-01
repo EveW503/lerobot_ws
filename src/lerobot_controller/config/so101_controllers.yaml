@@ -36,7 +36,6 @@ gripper_controller:
   ros__parameters:
     joints:
       - "6"
-    interface_name: position
       
     command_interfaces:
       - position

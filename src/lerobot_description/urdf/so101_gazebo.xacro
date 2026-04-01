@@ -3,7 +3,7 @@
 
     <!-- ROS 2 Control -->
     <gazebo>
-        <plugin filename="gz_ros2_control-system" name="gz_ros2_control::GazeboSimROS2ControlPlugin">
+        <plugin filename="libgazebo_ros2_control.so" name="gazebo_ros2_control">
             <parameters>$(find lerobot_controller)/config/so101_controllers.yaml</parameters>
         </plugin>
     </gazebo>
