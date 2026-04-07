@@ -18,6 +18,12 @@ def generate_launch_description():
         description="Absolute path to robot urdf file"
     )
 
+    world_arg = DeclareLaunchArgument(
+        name="world",
+        default_value="",
+        description="Absolute path to Gazebo world file"
+    )
+
     # 1. 解析 URDF/Xacro
     robot_description = ParameterValue(
         Command(["xacro ", LaunchConfiguration("model")]),
@@ -35,7 +41,8 @@ def generate_launch_description():
     gazebo = IncludeLaunchDescription(
         PythonLaunchDescriptionSource([os.path.join(
             get_package_share_directory("gazebo_ros"), "launch", "gazebo.launch.py"
-        )])
+        )]),
+        launch_arguments={"world": LaunchConfiguration("world")}.items(),
     )
 
     # 4. 在 Gazebo Classic 中生成机器人实体
@@ -51,6 +58,7 @@ def generate_launch_description():
 
     return LaunchDescription([
         model_arg,
+        world_arg,
         robot_state_publisher_node,
         gazebo,
         spawn_entity

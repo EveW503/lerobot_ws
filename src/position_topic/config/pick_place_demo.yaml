@@ -1,0 +1,48 @@
+pick_place_demo:
+  ros__parameters:
+    move_action_name: /move_action
+    gripper_action_name: /gripper_controller/follow_joint_trajectory
+
+    group_name: arm
+    ee_link: gripper
+    reference_frame: base
+
+    allowed_planning_time: 15.0
+    num_planning_attempts: 10
+    max_velocity_scaling_factor: 0.20
+    max_acceleration_scaling_factor: 0.20
+
+    position_tolerance: 0.015
+    orientation_tolerance_xyz: [3.14, 3.14, 3.14]
+    target_orientation: [0.0, 0.0, 0.0, 1.0]
+    use_orientation_constraint: false
+
+    object_name: target_box
+    object_link_name: box_link
+    robot_model_name: so101
+    robot_link_name: gripper
+    object_spawn_reference_frame: world
+    use_physical_attach: false
+    attach_service: /ATTACHLINK
+    detach_service: /DETACHLINK
+    set_entity_state_service: /set_entity_state
+    use_object_follow: true
+    use_delete_spawn_fallback: false
+    object_follow_rate_hz: 6.0
+    attached_object_offset_xyz: [0.0, 0.0, 0.0]
+
+    pick_position: [-0.16, 0.02, 0.14]
+    place_position: [-0.14, 0.05, 0.14]
+    approach_offset_z: 0.05
+    retreat_offset_z: 0.05
+
+    gripper_joint_name: "6"
+    gripper_open: 0.0
+    gripper_close: 0.8
+    gripper_motion_time: 1.5
+    post_gripper_settle_sec: 0.25
+
+    move_retry_max: 2
+    move_retry_delay_sec: 0.5
+
+    start_delay_sec: 2.0
