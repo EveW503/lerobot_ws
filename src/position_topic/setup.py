@@ -27,7 +27,6 @@ setup(
         'console_scripts': [
             'position_publisher = position_topic.position_publisher:main',
             'position_subscriber = position_topic.position_subscriber:main',
-            'pick_place_demo = position_topic.pick_place_demo:main',
         ],
     },
 )
