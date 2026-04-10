@@ -1,12 +1,12 @@
 # ROS 2 Package for LeRobot SO-ARM101
 
-LeRobot SO-ARM101 integrated into ROS 2 Jazzy.
+LeRobot SO-ARM101 integrated into ROS 2 Humble.
 
 ## Features
 
-- ✅ ROS 2 Jazzy compatibility
+- ✅ ROS 2 Humble compatibility
 - ✅ Rviz visualization
-- ✅ Gazebo Harmonic simulation
+- ✅ Gazebo Classic simulation
 - ✅ ROS 2 Control integration
 - ✅ MoveIt 2 motion planning
 - 📝 **TODO:** ROS 2 control interface for the real HW
