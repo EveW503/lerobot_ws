@@ -4,6 +4,7 @@
 build/
 install/
 log/
+src/IFRA_LinkAttacher
 
 *~
 *__pycache__/

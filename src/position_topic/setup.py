@@ -1,7 +1,24 @@
+import os
 from setuptools import find_packages, setup
 from glob import glob
 
 package_name = 'position_topic'
+
+# 递归收集 models 目录，保留子目录结构
+model_data_files = []
+for root, dirs, files in os.walk('models'):
+    if files:
+        dest = os.path.join('share', package_name, root)
+        sources = [os.path.join(root, f) for f in files]
+        model_data_files.append((dest, sources))
+
+# 递归收集 worlds 目录
+world_data_files = []
+for root, dirs, files in os.walk('worlds'):
+    if files:
+        dest = os.path.join('share', package_name, root)
+        sources = [os.path.join(root, f) for f in files]
+        world_data_files.append((dest, sources))
 
 setup(
     name=package_name,
@@ -12,10 +29,7 @@ setup(
             ['resource/' + package_name]),
         ('share/' + package_name, ['package.xml']),
         ('share/' + package_name + '/launch', glob('launch/*.launch.py')),
-        ('share/' + package_name + '/config', glob('config/*.yaml')),
-        ('share/' + package_name + '/models', glob('models/*.sdf')),
-        ('share/' + package_name + '/worlds', glob('worlds/*.world')),
-    ],
+    ] + model_data_files + world_data_files,
     install_requires=['setuptools'],
     zip_safe=True,
     maintainer='ljq',

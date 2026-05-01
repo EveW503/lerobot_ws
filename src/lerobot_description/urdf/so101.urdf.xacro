@@ -4,6 +4,12 @@
     <xacro:include filename="$(find lerobot_description)/urdf/so101_base.xacro" />
     <xacro:include filename="$(find lerobot_description)/urdf/so101_gazebo.xacro" />
     <xacro:include filename="$(find lerobot_description)/urdf/so101_ros2_control.xacro" />
+    <xacro:include filename="$(find lerobot_description)/urdf/so101_camera_in_hand.xacro" />
 
+    <xacro:so101_camera_in_hand 
+        parent="gripper" 
+        origin_xyz="0.03 0.0 0.0" 
+        origin_rpy="0 0 0" 
+    />
 
 </robot>

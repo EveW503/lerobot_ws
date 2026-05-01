@@ -1,0 +1,47 @@
+<?xml version="1.0" ?>
+<sdf version="1.6">
+  <world name="pick_place_strawberry_world">
+    <gravity>0 0 -9.81</gravity>
+
+    <gui>
+      <camera name="user_camera">
+        <pose>1.5 -1.5 1 0 0.4 2.356</pose>
+      </camera>
+    </gui>
+
+    <scene>
+      <sky>
+        <clouds>
+          <speed>12</speed>
+        </clouds>
+      </sky>
+      <grid>false</grid>
+    </scene>
+
+    <!-- 泥土地面 -->
+    <include>
+      <uri>model://dirt_plane</uri>
+      <pose>0 0 0 0 0 0</pose>
+    </include>
+
+    <include>
+      <uri>model://sun</uri>
+      <pose>0 100 0 0 0 0</pose>
+    </include>
+
+    <!-- 草莓种植床 (碰撞体高0.35m, 顶面在z≈0.175) -->
+    <include>
+      <uri>model://bed</uri>
+      <pose>0 0.5737 -0.25 0 0 0</pose>
+    </include>
+
+    <!-- 草莓植株 (在bed表面上, 机械臂正前方) -->
+    <include>
+      <uri>model://random_strawberry_plant</uri>
+      <pose>0.25 0.25 0.20 0 0 0</pose>
+    </include>
+
+    <!-- IFRA LinkAttacher 抓取插件 -->
+    <plugin name="gazebo_link_attacher" filename="libgazebo_link_attacher.so"/>
+  </world>
+</sdf>

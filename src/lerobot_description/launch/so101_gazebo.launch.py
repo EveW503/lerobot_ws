@@ -13,7 +13,12 @@ def generate_launch_description():
     position_topic = get_package_share_directory("position_topic")
     lerobot_description = get_package_share_directory("lerobot_description")
 
-    world_file = os.path.join(position_topic, "worlds", "pick_place_attacher.world")
+    world_file = os.path.join(position_topic, "worlds", "pick_place_strawberry.world")
+
+    # 将自定义模型路径加入 GAZEBO_MODEL_PATH
+    models_path = os.path.join(position_topic, "models")
+    existing = os.environ.get("GAZEBO_MODEL_PATH", "")
+    os.environ["GAZEBO_MODEL_PATH"] = models_path + (":" + existing if existing else "")
     target_file = os.path.join(position_topic, "models", "target_box.sdf")
 
     model_arg = DeclareLaunchArgument(
@@ -103,6 +108,7 @@ def generate_launch_description():
          ]
     )
 
+
     return LaunchDescription([
         model_arg,
         robot_state_publisher_node,
@@ -112,5 +118,4 @@ def generate_launch_description():
         spawn_camera,
         camera_base_tf,
         camera_optical_tf
-        # 注意：这里彻底删除了 GZ_SIM_RESOURCE_PATH 和 gz_ros2_bridge
     ])
